@@ -54,6 +54,7 @@ class HomePageBloc with ChangeNotifier {
   getCurrentUser() {
     mAuthMethods.getCurrentUser().then((User? currentUser) {
       mFirebaseUser = currentUser;
+      mFirebaseHelper.getUserData(currentUser!.uid);
       notifyListeners();
     });
   }

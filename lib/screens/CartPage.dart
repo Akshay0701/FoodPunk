@@ -164,9 +164,8 @@ class _CartPageContentState extends State<CartPageContent> {
   handleOrderPlacement() {
     //check if card is empty
     if (cartPageBloc.totalPrice == 0) {
-      print("not order");
       return AlertDialog(
-        title: Text('Abe Kuch Add Toh Kar'),
+        title: Text('Error'),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
@@ -186,7 +185,7 @@ class _CartPageContentState extends State<CartPageContent> {
       );
     } else {
       return AlertDialog(
-        title: Text('OO Bhai Bohot Paise Hai haa..'),
+        title: Text('Order Dialog'),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[

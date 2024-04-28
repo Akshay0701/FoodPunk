@@ -45,19 +45,21 @@ class AuthMethods {
     final UserCredential userCredential = await _auth
         .createUserWithEmailAndPassword(email: email, password: password);
     if (userCredential.user != null) {
-      await addDataToDb(userCredential.user!, email, phone, password);
+      await addDataToDb(userCredential.user!, email, phone, password, "", "", "");
     }
     return userCredential;
   }
 
   // after sign up, add user data to firebase realtime database
   Future<void> addDataToDb(
-      User currentUser, String username, String phone, String password) async {
+      User currentUser, String username, String phone, String password, String address, String name, String url) async {
     UserModel user = UserModel(
         uid: currentUser.uid,
         email: currentUser.email,
         phone: phone,
-        password: password);
+        name: name,
+        photoUrl: address,
+        address: url);
 
     _userReference.child(currentUser.uid).set(user.toMap(user));
   }

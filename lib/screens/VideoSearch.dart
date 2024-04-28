@@ -56,52 +56,6 @@ class _VideoSearchState extends State<VideoSearch> {
     );
   }
 
-  Widget listItem(YouTubeVideo video) {
-    return GestureDetector(
-      onTap: () {
-        //
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.2),
-              image: DecorationImage(
-                image: NetworkImage("${video.thumbnail.high.url}"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            height: MediaQuery.of(context).size.height * 0.25,
-          ),
-          Padding(
-            padding:
-            const EdgeInsets.only(right: 15, left: 15, top: 5, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  video.title,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
-                ),
-                Text(
-                  video.channelTitle,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black.withOpacity(0.7),
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
   buildSuggestions(String query) {
     return Expanded(
       child: ListView.builder(
@@ -159,45 +113,5 @@ class _VideoSearchState extends State<VideoSearch> {
     );
   }
 
-}
-
-
-class VideoPlayerPage extends StatelessWidget {
-  final String videoId;
-
-  const VideoPlayerPage({Key? key, required this.videoId}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Video Player'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image.network(
-                'https://img.youtube.com/vi/$videoId/maxresdefault.jpg',
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-// Open video player
-// You can use any video player package or WebView to play the video
-// For simplicity, let's just print the videoId here
-                print('Playing video with ID: $videoId');
-              },
-              child: Text('Play Video'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 

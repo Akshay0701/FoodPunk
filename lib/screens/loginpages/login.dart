@@ -33,12 +33,14 @@ class _LoginPageContentState extends State<LoginPageContent> {
     // TODO: // do we need to keep this here or in didChangeDependencies
     loginPageBloc = Provider.of<LoginPageBloc>(context);
     return Scaffold(
-      body: Container(
-        color: UniversalVariables.whiteColor,
-        padding: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-        child: Form(
-          key: _formKey,
-          child: buildForm(),
+      body: SingleChildScrollView(
+        child: Container(
+          color: UniversalVariables.whiteColor,
+          padding: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+          child: Form(
+            key: _formKey,
+            child: buildForm(),
+          ),
         ),
       ),
     );

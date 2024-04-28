@@ -145,7 +145,7 @@ class _FoodDetailPageContentState extends State<FoodDetailPageContent> {
                 padding:
                     const EdgeInsets.only(left: 18.0, top: 10.0, bottom: 10.0),
                 child: Text(
-                  "₹" + widget.fooddata.price,
+                  "\$" + widget.fooddata.price,
                   style: TextStyle(
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,

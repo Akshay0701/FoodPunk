@@ -16,6 +16,9 @@ import 'package:food_delivery_app/widgets/categorywidget.dart';
 import 'package:food_delivery_app/widgets/foodTitleWidget.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/universal_variables.dart';
+import 'FeaturePage.dart';
+import 'ProfilePage.dart';
 import 'VideoSearch.dart';
 
 class HomePage extends StatelessWidget {
@@ -253,9 +256,24 @@ class _HomePageContentState extends State<HomePageContent> {
             title: Text('My Order'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MyOrderPage()));
+                  MaterialPageRoute(builder: (context) => FeaturePage()));
             },
-          ),ListTile(
+          ),
+          ListTile(
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+            ),
+            leading: Icon(
+              Icons.person,
+              color: Colors.orangeAccent,
+            ),
+            title: Text('Profile'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()));
+            },
+          ),
+          ListTile(
             trailing: Icon(
               Icons.youtube_searched_for,
             ),
@@ -294,6 +312,7 @@ class _HomePageContentState extends State<HomePageContent> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           Padding(
             padding: const EdgeInsets.only(left: 18.0),
             child: Text(

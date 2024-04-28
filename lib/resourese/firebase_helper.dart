@@ -5,6 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:food_delivery_app/models/category_model.dart';
 import 'package:food_delivery_app/models/food_model.dart';
 import 'package:food_delivery_app/models/request_model.dart';
+import 'package:food_delivery_app/models/user_model.dart';
 import 'package:food_delivery_app/resourese/auth_methods.dart';
 import 'package:food_delivery_app/resourese/databaseSQL.dart';
 
@@ -18,7 +19,27 @@ class FirebaseHelper {
       _database.reference().child("Category");
   static final DatabaseReference _foodReference =
       _database.reference().child("Foods");
+  static final DatabaseReference _userReference =
+      _database.reference().child("Users");
 
+
+  Future<Map<String, dynamic>> getUserData(String userId) async {
+    try {
+      DatabaseReference reference = FirebaseDatabase.instance.reference();
+      DatabaseEvent snapshot = await reference.child('Users').child(userId).once();
+
+      if (snapshot.snapshot.value != null) {
+        Map<String, dynamic> userData = Map<String, dynamic>.from(snapshot.snapshot.value as Map<dynamic, dynamic>);
+        print(userData.toString());
+        return userData;
+      } else {
+        return {};
+      }
+    } catch (e) {
+      print('Error retrieving user data: $e');
+      throw e;
+    }
+  }
   // fetch all foods list from food reference
   Future<List<FoodModel>> fetchAllFood() async {
     List<FoodModel> foodList = <FoodModel>[];
@@ -57,6 +78,13 @@ class FirebaseHelper {
         .child(request.uid)
         .push()
         .set(request.toMap(request));
+    return true;
+  }
+
+  Future<bool> updateUserInfo(UserModel userModel) async {
+    await _userReference
+        .child(userModel.uid)
+        .set(userModel.toMap(userModel));
     return true;
   }
 
