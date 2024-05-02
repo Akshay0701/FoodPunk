@@ -2,24 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>903269742081-cm7e95fqubmkmvat2e0otp5sh4grrdsh.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.903269742081-cm7e95fqubmkmvat2e0otp5sh4grrdsh</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>903269742081-bt99bdgegtqces5r7ict0rrs49meoqg0.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCjWFakn4h9VxqwB9yfoQDOYDD1AJM1aQM</string>
+	<string>AIzaSyAzZrI4tPyha_F9ioV9oEt1fpVn7GWmRm0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>903269742081</string>
+	<string>318757443799</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>io.flutter.flutter.app</string>
 	<key>PROJECT_ID</key>
-	<string>foodzone-cbe08</string>
+	<string>movielistswiftfirebase</string>
 	<key>STORAGE_BUCKET</key>
-	<string>foodzone-cbe08.appspot.com</string>
+	<string>movielistswiftfirebase.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +25,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:903269742081:ios:0923c86ed678d356ec7200</string>
+	<string>1:318757443799:ios:fee37306caee06510fb892</string>
 	<key>DATABASE_URL</key>
-	<string>https://foodzone-cbe08.firebaseio.com</string>
+	<string>https://movielistswiftfirebase-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
