@@ -1,5 +1,10 @@
 
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:food_delivery_app/resourese/firebase_helper.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +15,7 @@ import 'package:food_delivery_app/resourese/auth_methods.dart';
 import 'package:food_delivery_app/screens/CartPage.dart';
 import 'package:food_delivery_app/screens/CategoryListPage.dart';
 import 'package:food_delivery_app/screens/FoodDetailPage.dart';
+import 'package:food_delivery_app/models/user_model.dart';
 import 'package:food_delivery_app/screens/MyOrderPage.dart';
 import 'package:food_delivery_app/screens/loginpages/login.dart';
 import 'package:food_delivery_app/screens/SearchPage.dart';
@@ -38,10 +44,17 @@ class HomePageContent extends StatefulWidget {
 
 class _HomePageContentState extends State<HomePageContent> {
   late HomePageBloc homePageBloc;
+  bool loading = false;
+  late UserModel userModel;
+  FirebaseHelper firebaseHelper = new FirebaseHelper();
 
   @override
   void initState() {
     super.initState();
+    setState(() {
+      loading = true;
+    });
+    retrieveUserData();
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
       homePageBloc.getCurrentUser();
       homePageBloc.getCategoryFoodList();
@@ -197,8 +210,19 @@ class _HomePageContentState extends State<HomePageContent> {
     );
   }
 
+  Future<void> retrieveUserData() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    Map<dynamic, dynamic> userData = await firebaseHelper.getUserData(user!.uid);
+    setState(() {
+      userModel = new UserModel.fromMap(userData);
+      // _photoUrl = userData['photoUrl'];
+      loading = false;
+    });
+  }
+
   createDrawer() {
-    return Drawer(
+
+    return loading ? CircularProgressIndicator() : Drawer(
       child: ListView(
         padding: EdgeInsets.all(0.0),
         children: <Widget>[
@@ -210,8 +234,7 @@ class _HomePageContentState extends State<HomePageContent> {
               accountName: Text(""),
               accountEmail: Text(homePageBloc.mFirebaseUser?.email ?? ""),
               currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/eggs-breakfast-avocado-1296x728-header.jpg?w=1155&h=1528")),
+                  backgroundImage: NetworkImage(userModel.photoUrl)),
             ),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
