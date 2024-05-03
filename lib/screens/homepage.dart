@@ -13,6 +13,7 @@ import 'package:food_delivery_app/screens/FoodDetailPage.dart';
 import 'package:food_delivery_app/screens/MyOrderPage.dart';
 import 'package:food_delivery_app/screens/loginpages/login.dart';
 import 'package:food_delivery_app/screens/SearchPage.dart';
+import 'package:food_delivery_app/screens/SuggestionsPage.dart';
 import 'package:food_delivery_app/widgets/categorywidget.dart';
 import 'package:food_delivery_app/widgets/foodTitleWidget.dart';
 import 'package:provider/provider.dart';
@@ -259,7 +260,22 @@ class _HomePageContentState extends State<HomePageContent> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MyOrderPage()));
             },
-          ), ListTile(
+          ),
+          ListTile(
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+            ),
+            leading: Icon(
+              Icons.fastfood,
+              color: Colors.orangeAccent,
+            ),
+            title: Text('Suggestions Page'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SuggestionsPage()));
+            },
+          ),
+          ListTile(
             trailing: Icon(
               Icons.arrow_forward_ios,
             ),
