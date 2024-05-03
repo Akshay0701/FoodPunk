@@ -10,7 +10,7 @@ class FoodTitleWidget extends StatelessWidget {
   FoodTitleWidget(this.fooddata);
   @override
   Widget build(BuildContext context) {
-    var random = new Random();
+
     gotoFoodDetails() {
       // Navigator.push(context, MaterialPageRoute(builder: (context)=>FoodDetailPage(fooddata)));
       Navigator.push(
@@ -51,7 +51,7 @@ class FoodTitleWidget extends StatelessWidget {
                     "${fooddata.name}\$",
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.black54),
                   ),
@@ -65,7 +65,7 @@ class FoodTitleWidget extends StatelessWidget {
                         color: UniversalVariables.orangeAccentColor,
                       ),
                       Text(
-                        doubleInRange(random, 3.5, 5.0).toStringAsFixed(1),
+                        4.2.toStringAsFixed(1),
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: UniversalVariables.orangeAccentColor),

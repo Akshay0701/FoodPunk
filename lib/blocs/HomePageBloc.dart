@@ -40,7 +40,7 @@ class HomePageBloc with ChangeNotifier {
       keys: "04");
   CategoryModel recentlyCategory3 = CategoryModel(
       image:
-          "https://static.toiimg.com/thumb/54659021.cms?width=1200&height=1200",
+          "https://cdn1.iconfinder.com/data/icons/restaurants-and-food/103/taco-512.png",
       name: "french fries",
       keys: "07");
   CategoryModel recentlyCategory4 = CategoryModel(

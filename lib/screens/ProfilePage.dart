@@ -24,9 +24,12 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   FirebaseHelper firebaseHelper = new FirebaseHelper();
   late UserModel userModel;
-  
+  bool loading = false;
   @override
   void initState() {
+    setState(() {
+      loading=true;
+    });
     retrieveUserData();
     super.initState();
   }
@@ -41,6 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
       textPhoneController.text = userData['phone'];
       textAddressController.text = userData['address'];
       // _photoUrl = userData['photoUrl'];
+      loading = false;
     });
   }
 
@@ -81,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
           children: <Widget>[
             SimpleDialogOption(
               child: Text("Capture Image with Camera",style: TextStyle(color: Colors.black),),
-              onPressed: captureImageWithCamera(mContext),
+              onPressed: null,
             ),
             SimpleDialogOption(
               child: Text("Image From Garlley",style: TextStyle(color: Colors.black),),
@@ -222,7 +226,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text('Profile'),
       ),
       body:
-      userModel == null ? CircularProgressIndicator() :
+      loading ? CircularProgressIndicator() :
       SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),

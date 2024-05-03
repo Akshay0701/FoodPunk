@@ -256,6 +256,19 @@ class _HomePageContentState extends State<HomePageContent> {
             title: Text('My Order'),
             onTap: () {
               Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyOrderPage()));
+            },
+          ), ListTile(
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+            ),
+            leading: Icon(
+              Icons.fastfood,
+              color: Colors.orangeAccent,
+            ),
+            title: Text('Features'),
+            onTap: () {
+              Navigator.push(context,
                   MaterialPageRoute(builder: (context) => FeaturePage()));
             },
           ),
@@ -271,20 +284,6 @@ class _HomePageContentState extends State<HomePageContent> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ProfilePage()));
-            },
-          ),
-          ListTile(
-            trailing: Icon(
-              Icons.youtube_searched_for,
-            ),
-            leading: Icon(
-              Icons.video_call_sharp,
-              color: Colors.orangeAccent,
-            ),
-            title: Text('Food Video search'),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VideoSearchPage()));
             },
           ),
           ListTile(
@@ -431,7 +430,7 @@ class _HomePageContentState extends State<HomePageContent> {
               child: CircleAvatar(
                 radius: 35.0,
                 backgroundImage: NetworkImage(
-                    "https://www.vippng.com/png/detail/133-1337804_french-fry-png-mcdonalds-french-fries-drawing.png",
+                    "https://cdn1.iconfinder.com/data/icons/restaurants-and-food/103/taco-512.png",
                     scale: 60.0),
               )),
           GestureDetector(
