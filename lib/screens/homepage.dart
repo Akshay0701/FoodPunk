@@ -11,6 +11,7 @@ import 'package:food_delivery_app/screens/CartPage.dart';
 import 'package:food_delivery_app/screens/CategoryListPage.dart';
 import 'package:food_delivery_app/screens/FoodDetailPage.dart';
 import 'package:food_delivery_app/screens/MyOrderPage.dart';
+import 'package:food_delivery_app/screens/loginpages/login.dart';
 import 'package:food_delivery_app/screens/SearchPage.dart';
 import 'package:food_delivery_app/widgets/categorywidget.dart';
 import 'package:food_delivery_app/widgets/foodTitleWidget.dart';
@@ -298,6 +299,10 @@ class _HomePageContentState extends State<HomePageContent> {
             onTap: () async {
               final AuthMethods _authMethods = AuthMethods();
               await _authMethods.logout();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
             },
           ),
         ],
