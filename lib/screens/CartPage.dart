@@ -91,7 +91,7 @@ class _CartPageContentState extends State<CartPageContent> {
                     fontSize: 25.0),
               ),
               Text(
-                "${cartPageBloc.totalPrice} Rs.",
+                "${cartPageBloc.totalPrice}\$",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,

@@ -27,7 +27,7 @@ class _OrderWidgetState extends State<OrderWidget> {
     ),
     Step(
       content: Text('Completed'),
-      title: Text('asd'),
+      title: Text('Completed'),
       isActive: true,
     ),
   ];
