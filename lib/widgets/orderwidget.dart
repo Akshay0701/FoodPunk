@@ -24,12 +24,7 @@ class _OrderWidgetState extends State<OrderWidget> {
       title: Text('On The Way'),
       content: Text('asd'),
       isActive: true,
-    ),
-    Step(
-      content: Text('Completed'),
-      title: Text('Completed'),
-      isActive: true,
-    ),
+    )
   ];
 
   @override
@@ -59,7 +54,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                   "https://www.pngitem.com/pimgs/m/252-2523515_delivery-clipart-delivery-order-frames-illustrations.png"),
             ),
             trailing: Text(
-              widget.request.total + " Rs.",
+              widget.request.total + "\$.",
               style: TextStyle(
                 color: UniversalVariables.orangeColor,
                 fontSize: 20.0,
