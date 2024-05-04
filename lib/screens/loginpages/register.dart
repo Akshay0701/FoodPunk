@@ -47,64 +47,106 @@ class _RegisterPageContentState extends State<RegisterPageContent> {
   }
 
   buildForm() {
-    return Column(
-      children: [
-        SizedBox(height: 20.0),
-        FlutterLogo(
-          size: 200.0,
-        ),
-        SizedBox(height: 20.0),
-        TextFormField(
-          validator: (email) {
-            return registerPageBloc.validateEmail(email ?? '');
-          },
-          controller: textNameController,
-          decoration: InputDecoration(hintText: "Email"),
-        ),
-        TextFormField(
-          maxLength: 10,
-          inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(height: 20.0),
+            Hero(
+              tag: 'hero',
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                radius: 80.0,
+                child: Image.asset('assets/logo.jpg'),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            TextFormField(
+              validator: (email) {
+                return registerPageBloc.validateEmail(email ?? '');
+              },
+              controller: textNameController,
+              decoration: InputDecoration(
+                hintText: "Email",
+                prefixIcon: Icon(Icons.email),
+                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 10.0),
+            TextFormField(
+              maxLength: 10,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly,
+              ],
+              keyboardType: TextInputType.number,
+              validator: (phone) {
+                return registerPageBloc.validatePhone(phone ?? '');
+              },
+              controller: textPhoneController,
+              decoration: InputDecoration(
+                hintText: "Phone Number",
+                prefixIcon: Icon(Icons.phone),
+                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 10.0),
+            TextFormField(
+              validator: (password) {
+                return registerPageBloc.validatePassword(password ?? '');
+              },
+              controller: textPasswordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: "Password",
+                prefixIcon: Icon(Icons.lock),
+                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                primary: UniversalVariables.orangeColor,
+              ),
+              onPressed: () {
+                registerPageBloc
+                    .validateFormAndRegister(
+                  _formKey,
+                  textNameController.text,
+                  textPasswordController.text,
+                  textPhoneController.text,
+                )
+                    .then((_) => gotoHomePage());
+              },
+              child: Text(
+                "Register",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: UniversalVariables.whiteColor,
+                ),
+              ),
+            ),
+            SizedBox(height: 10.0),
+            registerPageBloc.isRegisterPressed
+                ? CircularProgressIndicator()
+                : SizedBox.shrink(),
           ],
-          keyboardType: TextInputType.number,
-          validator: (phone) {
-            return registerPageBloc.validatePhone(phone ?? '');
-          },
-          controller: textPhoneController,
-          decoration: InputDecoration(hintText: "PhoneNo"),
         ),
-        TextFormField(
-          validator: (password) {
-            return registerPageBloc.validatePassword(password ?? '');
-          },
-          controller: textPasswordController,
-          decoration: InputDecoration(hintText: "Password"),
-        ),
-        SizedBox(height: 20.0),
-        TextButton(
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(UniversalVariables.orangeColor),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            )),
-          ),
-          onPressed: () {
-            registerPageBloc
-                .validateFormAndRegister(_formKey, textNameController.text,
-                    textPasswordController.text, textPhoneController.text)
-                .then((_) => gotoHomePage());
-          },
-          child: Text("Register",
-              style: TextStyle(
-                color: UniversalVariables.whiteColor,
-              )),
-        ),
-        registerPageBloc.isRegisterPressed
-            ? Center(child: CircularProgressIndicator())
-            : Container(),
-      ],
+      ),
     );
   }
 
