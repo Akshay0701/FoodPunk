@@ -16,6 +16,11 @@ class UserModel {
       required this.name,
       required this.phone});
 
+
+  set photoUrl(String photoUrl) {
+    this.photoUrl = photoUrl;
+  }
+
   Map toMap(UserModel user) {
     var data = Map<String, dynamic>();
     data['uid'] = user.uid;

@@ -74,6 +74,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "csslib",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/csslib-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "dio",
       "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/dio-5.4.3+1",
       "packageUri": "lib/",
@@ -320,6 +326,48 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "google_maps",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/google_maps-6.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "google_maps_flutter",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/google_maps_flutter-2.5.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "google_maps_flutter_android",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "google_maps_flutter_ios",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.3.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "google_maps_flutter_platform_interface",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/google_maps_flutter_platform_interface-2.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "google_maps_flutter_web",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/google_maps_flutter_web-0.5.4+3",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "html",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/html-0.15.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/http-0.13.6",
       "packageUri": "lib/",
@@ -384,6 +432,12 @@
       "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "js_wrapping",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/js_wrapping-0.7.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "matcher",
@@ -464,6 +518,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "petitparser",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/petitparser-6.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/platform-3.1.4",
       "packageUri": "lib/",
@@ -484,6 +544,12 @@
     {
       "name": "rxdart",
       "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sanitize_html",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/sanitize_html-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -534,6 +600,12 @@
       "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/stream_channel-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "stream_transform",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/stream_transform-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "string_scanner",
@@ -602,10 +674,28 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/xml-6.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "xml2json",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/xml2json-5.3.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "youtube_api",
       "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/youtube_api-1.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "youtube_data_api",
+      "rootUri": "file:///Users/akshayjadhav/.pub-cache/hosted/pub.dev/youtube_data_api-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "youtube_player_flutter",
@@ -620,7 +710,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2024-05-02T04:15:15.305555Z",
+  "generated": "2024-05-04T05:27:02.668796Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }

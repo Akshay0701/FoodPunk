@@ -226,19 +226,43 @@ class _HomePageContentState extends State<HomePageContent> {
       child: ListView(
         padding: EdgeInsets.all(0.0),
         children: <Widget>[
-          DrawerHeader(
-            child: UserAccountsDrawerHeader(
+          Container(
+            height: 250,
+            child: DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.orange
               ),
-              accountName: Text(""),
-              accountEmail: Text(homePageBloc.mFirebaseUser?.email ?? ""),
-              currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(userModel.photoUrl)),
-            ),
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Colors.transparent,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  UserAccountsDrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.transparent, 
+                    ),
+                    accountName: Text(
+                      userModel.name,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18, // Increase font size
+                      ),
+                    ),
+                    accountEmail: Text(
+                      userModel.email ?? "",
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 16,
+                      ),
+                    ),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundImage: NetworkImage(userModel.photoUrl),
+                      radius: 40, 
+                    ),
+                  ),
+
+                ],
+              ),
             ),
           ),
           ListTile(

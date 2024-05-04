@@ -37,6 +37,8 @@ dependencies:
   sqflite:
   path:
   youtube_api:
+  youtube_data_api:
+  google_maps_flutter:
   split_view:
   http:
   youtube_player_flutter:

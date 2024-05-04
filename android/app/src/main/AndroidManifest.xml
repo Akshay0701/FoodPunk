@@ -9,6 +9,8 @@
           android:name="${applicationName}"
         android:label="food_delivery_app"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB3fWH5q_3LXgw4gXjq-Edpu-BPhwcFY9Y"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -17,6 +19,7 @@
             android:hardwareAccelerated="true"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues

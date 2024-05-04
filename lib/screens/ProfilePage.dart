@@ -10,6 +10,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:food_delivery_app/models/user_model.dart';
 import 'package:food_delivery_app/resourese/auth_methods.dart';
 import 'package:food_delivery_app/resourese/firebase_helper.dart';
+import 'package:food_delivery_app/screens/homepage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -149,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
       // Create a reference to the location you want to upload to in Firebase Storage
       Reference storageReference =
-      FirebaseStorage.instance.ref().child('images/$fileName');
+      FirebaseStorage.instance.ref().child('images/${userModel.uid}');
 
       // Upload the file to Firebase Storage
       UploadTask uploadTask = storageReference.putFile(File(xfile.path));
@@ -161,6 +162,9 @@ class _ProfilePageState extends State<ProfilePage> {
       String downloadURL = await taskSnapshot.ref.getDownloadURL();
 
       // Return the download URL
+      setState(() {
+       userModel.photoUrl = downloadURL;
+      });
       return downloadURL;
     } catch (e) {
       print("Error uploading file: $e");
@@ -203,6 +207,11 @@ class _ProfilePageState extends State<ProfilePage> {
           .child("Users")
           .child(newUserModel.uid)
           .set(newUserModel.toMap(newUserModel));
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
 
       ScaffoldMessenger.of(context!).showSnackBar( SnackBar(
         content: Text('User Info Updated'),

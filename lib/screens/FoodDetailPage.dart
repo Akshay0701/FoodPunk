@@ -6,8 +6,10 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:food_delivery_app/blocs/FoodDetailPageBloc.dart';
 import 'package:food_delivery_app/models/food_model.dart';
+import 'package:food_delivery_app/resourese/firebase_helper.dart';
 import 'package:food_delivery_app/utils/universal_variables.dart';
 import 'package:food_delivery_app/widgets/foodTitleWidget.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class FoodDetailPage extends StatelessWidget {
@@ -33,6 +35,10 @@ class FoodDetailPageContent extends StatefulWidget {
 class _FoodDetailPageContentState extends State<FoodDetailPageContent> {
   late FoodDetailPageBloc foodDetailPageBloc;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+   FirebaseHelper mFirebaseHelper = FirebaseHelper();
+  late GoogleMapController mapController;
+  Map<String,Marker> _markers = {};
+  final LatLng _center = const LatLng(43.0387, -76.1337);
 
   // sample discription for food details
   String sampleDescription =
@@ -47,6 +53,38 @@ class _FoodDetailPageContentState extends State<FoodDetailPageContent> {
     });
   }
 
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    addMarker('test', _center);
+  }
+
+  void _showMapDialog() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.6,
+          child: GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 11.0,
+            ),
+            markers: _markers.values.toSet(),
+          ),
+        );
+      }
+    );
+  }
+
+  addMarker(String id, LatLng location){
+    var marker = Marker(markerId: MarkerId(id), position: location, );
+    _markers[id] = marker;
+    setState(() {
+      
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO:  Do we need to keep this here or in didChangeDependencies
@@ -57,6 +95,16 @@ class _FoodDetailPageContentState extends State<FoodDetailPageContent> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0.0,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.map),
+              onPressed: _showMapDialog,
+            ),
+            IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {},
+            ),
+          ],
           iconTheme: IconThemeData(
             color: UniversalVariables.whiteColor,
           ),
