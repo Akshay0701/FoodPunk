@@ -10,7 +10,6 @@ class DatabaseSql {
   int? count;
 
   Future<void> openDatabaseSql() async {
-    // Get a location using getDatabasesPath
     var databasesPath = await getDatabasesPath();
     String path = join(databasesPath, 'cart.db');
 
@@ -19,7 +18,6 @@ class DatabaseSql {
       path,
       version: 1,
       onCreate: (Database db, int version) async {
-        // When creating the db, create the table
         await db.execute(
           "CREATE TABLE cartTable(keys TEXT PRIMARY KEY, name TEXT, price TEXT,menuId TEXT,image TEXT,discount TEXT,description TEXT)",
         );
@@ -58,7 +56,6 @@ class DatabaseSql {
   Future<List<FoodModel>> getData() async {
     List<FoodModel> foodList = [];
     List<Map> list = await database.rawQuery('SELECT * FROM cartTable');
-    // convert to list food
     list.forEach((map) {
       foodList.add(FoodModel.fromMap(map));
     });

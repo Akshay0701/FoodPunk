@@ -145,49 +145,23 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<String?> uploadFileToStorage(XFile xfile) async {
     try {
-      // Get the file name
       String fileName = basename(xfile.path);
 
-      // Create a reference to the location you want to upload to in Firebase Storage
       Reference storageReference =
       FirebaseStorage.instance.ref().child('images/${userModel.uid}');
 
-      // Upload the file to Firebase Storage
       UploadTask uploadTask = storageReference.putFile(File(xfile.path));
 
-      // Await for the upload to complete
       TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {});
 
-      // Get the download URL for the uploaded file
       String downloadURL = await taskSnapshot.ref.getDownloadURL();
 
-      // Return the download URL
       setState(() {
        userModel.photoUrl = downloadURL;
       });
       return downloadURL;
     } catch (e) {
       print("Error uploading file: $e");
-      return null;
-    }
-  }
-
-  Future<String?> uploadImageToFirebaseStorage(XFile imageFile) async {
-    try {
-      // Create a reference to the location you want to upload to in Firebase Storage
-      Reference storageRef = FirebaseStorage.instance.ref().child('images');
-
-      // Upload the file to Firebase Storage
-      UploadTask uploadTask = storageRef.putFile(File(imageFile.path));
-
-      // Wait for the upload to complete and retrieve the download URL
-      TaskSnapshot snapshot = await uploadTask;
-      String downloadUrl = await snapshot.ref.getDownloadURL();
-
-      // Return the download URL
-      return downloadUrl;
-    } catch (e) {
-      print('Error uploading image to Firebase Storage: $e');
       return null;
     }
   }

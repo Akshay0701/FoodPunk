@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-// Define a model class to represent meal data
 class Meal {
   final String id;
   final String name;
@@ -23,7 +22,6 @@ class Meal {
   });
 
   factory Meal.fromJson(Map<String, dynamic> json) {
-    // Parse the JSON data and create a Meal object
     List<String> ingredients = [];
     for (int i = 1; i <= 20; i++) {
       final ingredient = json['strIngredient$i'];
